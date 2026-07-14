@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rắn Săn Mồi - Snake Game</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🐍 RẮN SĂN MỒI</h1>
+
+  <div class="screen active" id="screen-menu">
+    <button class="menu-btn primary" id="btnStart">▶ Bắt đầu</button>
+    <button class="menu-btn" id="btnSpeedMenu">⚡ Chọn tốc độ</button>
+    <button class="menu-btn" id="btnLevelMenu">🎮 Chọn chế độ</button>
+    <button class="menu-btn" id="btnHistoryMenu">📜 Lịch sử điểm</button>
+    <button class="menu-btn" id="btnSoundToggle">🔊 Âm thanh: Bật</button>
+  </div>
+
+  <div class="screen" id="screen-speed">
+    <button class="back-btn" data-back="menu">← Quay lại</button>
+    <h2 class="subtitle">Chọn tốc độ</h2>
+    <div class="option-group">
+      <button class="option-btn" data-speed="160">Chậm</button>
+      <button class="option-btn" data-speed="110">Vừa</button>
+      <button class="option-btn" data-speed="70">Nhanh</button>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-level">
+    <button class="back-btn" data-back="menu">← Quay lại</button>
+    <h2 class="subtitle">Chọn chế độ</h2>
+    <div class="level-card" data-level="classic">
+      <div class="lvl-name">1. Cổ điển</div>
+      <div class="lvl-desc">Bản đồ trống, không ma, không kỹ năng</div>
+    </div>
+    <div class="level-card" data-level="obstacles">
+      <div class="lvl-name">2. Trung bình</div>
+      <div class="lvl-desc">Có chướng ngại vật cố định + ma tuần tra khu vực</div>
+    </div>
+    <div class="level-card" data-level="maze">
+      <div class="lvl-name">3. Đặc biệt</div>
+      <div class="lvl-desc">Mê cung có ma tuần tra + mồi đặc biệt cho kỹ năng: xuyên thấu, đóng băng ma, hồi sinh</div>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-history">
+    <button class="back-btn" data-back="menu">← Quay lại</button>
+    <h2 class="subtitle">Lịch sử điểm gần đây</h2>
+    <div class="history-list" id="historyList"></div>
+    <button class="menu-btn" id="btnClearHistory" style="background:#5a2a2a;border-color:#8a3a3a;">🗑 Xóa lịch sử</button>
+  </div>
+
+  <div class="screen" id="screen-game">
+    <div class="hud">
+      <div>Điểm: <span id="score">0</span></div>
+      <div>Kỷ lục: <span id="highscore">0</span></div>
+    </div>
+    <div class="buff-status" id="buffStatus"></div>
+
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <div class="controls-hint">
+      Dùng phím mũi tên hoặc W A S D để điều khiển • Nhấn Space để tạm dừng
+    </div>
+
+    <div class="mobile-controls">
+      <div></div><button id="btnUp">▲</button><div></div>
+      <button id="btnLeft">◀</button><div></div><button id="btnRight">▶</button>
+      <div></div><button id="btnDown">▼</button><div></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="gameOverScreen">
+    <h2>GAME OVER</h2>
+    <p>Điểm của bạn: <span id="finalScore">0</span></p>
+    <div class="overlay-btns">
+      <button class="action" id="restartBtn">Chơi lại</button>
+      <button class="action secondary" id="menuBtn">Về menu</button>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a2a1a 0%, #0d1a0d 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #e8f5e8;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #7fff7f;
+    text-shadow: 0 0 10px rgba(127, 255, 127, 0.5);
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  h2.subtitle {
+    font-size: 1.3rem;
+    color: #7fff7f;
+    margin-bottom: 20px;
+  }
+
+  .screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .screen.active { display: flex; }
+
+  .menu-btn {
+    background: #234a23;
+    color: #e8f5e8;
+    border: 2px solid #3fae3f;
+    padding: 14px 20px;
+    font-size: 1.05rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    margin-bottom: 12px;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .menu-btn:hover { background: #3fae3f; transform: translateY(-1px); }
+  .menu-btn.primary { background: #3fae3f; }
+  .menu-btn.primary:hover { background: #4fce4f; }
+
+  .option-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .option-btn {
+    flex: 1;
+    background: #1a331a;
+    color: #a8c8a8;
+    border: 2px solid #2a5a2a;
+    padding: 12px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .option-btn.selected {
+    background: #3fae3f;
+    color: white;
+    border-color: #7fff7f;
+  }
+
+  .level-card {
+    width: 100%;
+    background: #1a331a;
+    border: 2px solid #2a5a2a;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .level-card.selected {
+    border-color: #7fff7f;
+    background: #234a23;
+  }
+
+  .level-card .lvl-name { font-weight: bold; color: #7fff7f; font-size: 1.05rem; }
+  .level-card .lvl-desc { font-size: 0.85rem; color: #a8c8a8; margin-top: 4px; }
+
+  .history-list {
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+  }
+
+  .history-item {
+    display: flex;
+    justify-content: space-between;
+    background: #1a331a;
+    border: 1px solid #2a5a2a;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+
+  .history-item .h-score { color: #7fff7f; font-weight: bold; }
+  .history-item .h-meta { color: #a8c8a8; font-size: 0.8rem; }
+
+  .empty-msg { color: #a8c8a8; text-align: center; padding: 20px; }
+
+  .hud {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+
+  .hud span { color: #7fff7f; font-weight: bold; }
+
+  .buff-status {
+    min-height: 18px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: #ffe066;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  #gameCanvas {
+    background: #0f1f0f;
+    border: 3px solid #3fae3f;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(63, 174, 63, 0.3);
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .controls-hint {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #a8c8a8;
+    text-align: center;
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 10;
+  }
+
+  .overlay.show { display: flex; }
+
+  .overlay h2 {
+    font-size: 2.2rem;
+    color: #ff6b6b;
+    margin-bottom: 10px;
+  }
+
+  .overlay p { margin-bottom: 20px; font-size: 1.1rem; }
+
+  .overlay-btns { display: flex; gap: 10px; }
+
+  button.action {
+    background: #3fae3f;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+
+  button.action:hover { background: #4fce4f; }
+  button.action.secondary { background: #444; }
+  button.action.secondary:hover { background: #555; }
+
+  .back-btn {
+    background: none;
+    border: none;
+    color: #a8c8a8;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-bottom: 10px;
+    align-self: flex-start;
+  }
+
+  .mobile-controls {
+    display: none;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 60px);
+    grid-template-rows: repeat(3, 60px);
+    gap: 5px;
+  }
+
+  .mobile-controls button {
+    padding: 0;
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .mobile-controls { display: grid; }
+    h1 { font-size: 1.4rem; }
+  }
